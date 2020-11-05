@@ -55,7 +55,7 @@ class MyWindow(QMainWindow):
         url = self.textbox.text()
         path = self.textbox1.text()
         res = self.textbox2.text()
-        videos(url,path,res)
+        playlist(url,path,res)
 
 def videos(url,path,res):
     ytd = YouTube(url)
