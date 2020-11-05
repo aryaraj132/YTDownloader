@@ -1,15 +1,18 @@
 try:
-    from PyQt5 import QtWidgets
+    from PyQt5 import QtWidgets, QtGui
     from PyQt5.QtWidgets import QApplication, QMainWindow, QLineEdit
     import sys
+    import os
     from pytube import YouTube
     from pytube import Playlist
 except Exception as e:
     print("some modules are missing {}".format(e))
+scriptDir = os.path.dirname(os.path.realpath(__file__))
 class MyWindow(QMainWindow):
     def __init__(self):
         super(MyWindow, self).__init__()
-        self.setGeometry(200,70,1000,900)
+        self.setWindowIcon(QtGui.QIcon(scriptDir + os.path.sep + 'logo.png'))
+        self.setGeometry(200,80,1000,900)
         self.setWindowTitle("Download YouTube Video/Playlist ")
         self.initUI()
     def initUI(self):
