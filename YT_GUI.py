@@ -34,11 +34,21 @@ class MyWindow(QMainWindow):
         self.textbox2.move(200,280)
         self.textbox2.resize(280,40)
         self.b1 = QtWidgets.QPushButton(self)
-        self.b1.setText("Submit")
-        self.b1.move(200,350)
-        self.b1.clicked.connect(self.clicked)
-        self.label2 = QtWidgets.QLabel(self)
-    def clicked(self):
+        self.b1.setText("Download Video")
+        self.b1.move(250,400)
+        self.b1.resize(280,40)
+        self.b1.clicked.connect(self.download_vid)
+        self.b2 = QtWidgets.QPushButton(self)
+        self.b2.setText("Download Playlist")
+        self.b2.move(250,450)
+        self.b2.resize(280,40)
+        self.b2.clicked.connect(self.download_list)
+    def download_vid(self):
+        url = self.textbox.text()
+        path = self.textbox1.text()
+        res = self.textbox2.text()
+        videos(url,path,res)
+    def download_list(self):
         url = self.textbox.text()
         path = self.textbox1.text()
         res = self.textbox2.text()
@@ -53,6 +63,21 @@ def videos(url,path,res):
         print("File Downloaded successfully")
     except:
         print("File not Downloaded")
+
+def playlist(url,path,res):
+    count = 1
+    playlist = Playlist(url)
+    for video_url in playlist.video_urls:
+        try:
+            ytd = YouTube(video_url)
+            stream = ytd.streams.filter(progressive=True)
+            file = stream.get_by_resolution(res)
+            file.download(path)
+            print("{} File Downloaded successfully".format(count))
+            count+=1
+        except:
+            print("error found please provide proper resolution ")
+            break
 
 def window():
     app = QApplication(sys.argv)
