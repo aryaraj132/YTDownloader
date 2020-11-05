@@ -10,7 +10,7 @@ class MyWindow(QMainWindow):
     def __init__(self):
         super(MyWindow, self).__init__()
         self.setGeometry(200,70,1000,900)
-        self.setWindowTitle("Gui with Aryan")
+        self.setWindowTitle("Download YouTube Video/Playlist ")
         self.initUI()
     def initUI(self):
         self.label = QtWidgets.QLabel(self)
