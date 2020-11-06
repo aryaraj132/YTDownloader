@@ -10,4 +10,4 @@
 
 * “720p”, “480p”, “360p”, “240p”, “144p”
 
-* [“720p” and “360p” works in most of the cases]
+* [ “720p” and “360p” works in most of the cases ]
