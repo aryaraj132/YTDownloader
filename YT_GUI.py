@@ -52,9 +52,9 @@ class MyWindow(QMainWindow):
         self.b2.resize(280,40)
         self.b2.clicked.connect(self.download_list)
         self.label3 = QtWidgets.QLabel(self)
-        self.label3.setText("")
+        self.label3.setText("Give URL and Path And Resolution to download the video")
         self.label3.move(50,500)
-        self.label3.adjustSize()
+        self.label3.resize(350,10)
     def download_vid(self):
         url = self.textbox.text()
         path = self.textbox1.text()
@@ -64,7 +64,7 @@ class MyWindow(QMainWindow):
         url = self.textbox.text()
         path = self.textbox1.text()
         res = self.textbox2.text()
-        playlist(url,path,res)
+        playlist(self,url,path,res)
 
 def videos(self,url,path,res):
     ytd = YouTube(url)
@@ -73,11 +73,10 @@ def videos(self,url,path,res):
         file = stream.get_by_resolution(res)
         file.download(path)
         self.label3.setText("File downloaded")
-        print("File Downloaded successfully")
     except:
-        print("File not Downloaded")
+        self.label3.setText("File Not downloaded")
 
-def playlist(url,path,res):
+def playlist(self,url,path,res):
     count = 1
     playlist = Playlist(url)
     for video_url in playlist.video_urls:
@@ -86,10 +85,10 @@ def playlist(url,path,res):
             stream = ytd.streams.filter(progressive=True)
             file = stream.get_by_resolution(res)
             file.download(path)
-            print("{} File Downloaded successfully".format(count))
+            self.label3.setText(count + "File downloaded")
             count+=1
         except:
-            print("error found please provide proper resolution ")
+            self.label3.setText("File Not downloaded")
             break
 
 def window():
