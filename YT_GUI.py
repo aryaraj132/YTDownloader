@@ -12,7 +12,7 @@ class MyWindow(QMainWindow):
     def __init__(self):
         super(MyWindow, self).__init__()
         self.setWindowIcon(QtGui.QIcon(scriptDir + os.path.sep + 'logo.png'))
-        self.setGeometry(200,80,1000,900)
+        self.setGeometry(200,80,700,600)
         self.setWindowTitle("Download YouTube Video/Playlist ")
         self.initUI()
     def initUI(self):
@@ -40,6 +40,7 @@ class MyWindow(QMainWindow):
         self.textbox2 = QLineEdit(self)
         self.textbox2.move(200,280)
         self.textbox2.resize(280,40)
+        self.textbox2.setText("720p")
         self.b1 = QtWidgets.QPushButton(self)
         self.b1.setText("Download Video")
         self.b1.move(250,400)
