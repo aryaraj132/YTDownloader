@@ -78,18 +78,22 @@ def videos(self,url,path,res):
 
 def playlist(self,url,path,res):
     count = 1
+    error = 1
     playlist = Playlist(url)
     for video_url in playlist.video_urls:
-        try:
-            ytd = YouTube(video_url)
-            stream = ytd.streams.filter(progressive=True)
-            file = stream.get_by_resolution(res)
-            file.download(path)
-            self.label3.setText(count + "File downloaded")
-            count+=1
-        except:
-            self.label3.setText("File Not downloaded")
-            break
+        while(True):
+            try:
+                ytd = YouTube(video_url)
+                stream = ytd.streams.filter(progressive=True)
+                file = stream.get_by_resolution(res)
+                file.download(path + '\\' + playlist.title())
+                self.label3.setText(str(count) + "File downloaded")
+                count+=1
+                break
+            except:
+                self.label3.setText(str(error) + "File Not downloaded")
+                error+=1
+                break
 
 def window():
     app = QApplication(sys.argv)
