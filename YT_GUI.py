@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+"""
+@author: Aryan Raj
+"""
 try:
     from PyQt5 import QtWidgets, QtGui
     from PyQt5.QtWidgets import QApplication, QMainWindow, QLineEdit
@@ -13,7 +17,7 @@ class MyWindow(QMainWindow):
         super(MyWindow, self).__init__()
         self.setWindowIcon(QtGui.QIcon(scriptDir + os.path.sep + 'logo.png'))
         self.setGeometry(200,80,700,600)
-        self.setWindowTitle("Download YouTube Video/Playlist ")
+        self.setWindowTitle("Download YouTube Video/Playlist")
         self.initUI()
     def initUI(self):
         #font = QtGui.QFont()
