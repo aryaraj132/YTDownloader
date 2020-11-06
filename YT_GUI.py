@@ -51,23 +51,28 @@ class MyWindow(QMainWindow):
         self.b2.move(250,450)
         self.b2.resize(280,40)
         self.b2.clicked.connect(self.download_list)
+        self.label3 = QtWidgets.QLabel(self)
+        self.label3.setText("")
+        self.label3.move(50,500)
+        self.label3.adjustSize()
     def download_vid(self):
         url = self.textbox.text()
         path = self.textbox1.text()
         res = self.textbox2.text()
-        videos(url,path,res)
+        videos(self,url,path,res)
     def download_list(self):
         url = self.textbox.text()
         path = self.textbox1.text()
         res = self.textbox2.text()
         playlist(url,path,res)
 
-def videos(url,path,res):
+def videos(self,url,path,res):
     ytd = YouTube(url)
     stream = ytd.streams.filter(progressive=True)
     try:
         file = stream.get_by_resolution(res)
         file.download(path)
+        self.label3.setText("File downloaded")
         print("File Downloaded successfully")
     except:
         print("File not Downloaded")
