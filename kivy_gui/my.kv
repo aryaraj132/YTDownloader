@@ -6,9 +6,11 @@
 <Label>:
     font_size:15
     color:1,0.6,0.7,1
-    pos_hint:{"x":0.025}
+    pos_hint:{"x":0}
     size_hint: 0.5,0.15
     background_color: 0.3,0.4,0.5,1
+    valign : "middle"
+    halign : "center"
 
 <TextInput>:
     font_size:15
@@ -25,29 +27,29 @@
     Label:
         text: "Enter URL : "
         text_size: self.size
-        pos_hint:{"x":0,"top":0.9}
+        pos_hint:{"x":0,"top":0.965}
     TextInput:
         id:url
         multiline:False
-        pos_hint:{"x":0.5,"top":0.9}
+        pos_hint:{"x":0.5,"top":0.965}
     Label:
         text: "Enter Download Path : "
         text_size: self.size
-        pos_hint:{"x":0,"top":0.7}
+        pos_hint:{"x":0,"top":0.765}
     TextInput:
         id:path
         text: app.Dir
         multiline:False
-        pos_hint:{"x":0.5,"top":0.7}
+        pos_hint:{"x":0.5,"top":0.765}
     Label:
         text: "Enter Resolution (“720p”, “360p”) : "
         text_size: self.size
-        pos_hint:{"x":0,"top":0.5}
+        pos_hint:{"x":0,"top":0.565}
     TextInput:
         id:res
         multiline:False
         text:"720p"
-        pos_hint:{"x":0.5,"top":0.5}
+        pos_hint:{"x":0.5,"top":0.565}
 
     Button:
         #id:btn1
