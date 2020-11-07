@@ -1,38 +1,66 @@
-<MyGrid>
+<Button>:
+    font_size:15
+    color:1,0.6,0.7,1
+    background_color: 0.3,0.4,0.5,1
 
+<Label>:
+    font_size:15
+    color:1,0.6,0.7,1
+    pos_hint:{"x":0.025}
+    size_hint: 0.5,0.15
+    background_color: 0.3,0.4,0.5,1
+
+<TextInput>:
+    font_size:15
+    color:1,0.6,0.7,1
+    pos_hint:{"x":0.5}
+    size_hint: 0.475,0.15
+
+
+<FloatLayout>:
     url : url
     path : path
     res : res
     info:info
+    Label:
+        text: "Enter URL : "
+        text_size: self.size
+        pos_hint:{"x":0,"top":0.9}
+    TextInput:
+        id:url
+        multiline:False
+        pos_hint:{"x":0.5,"top":0.9}
+    Label:
+        text: "Enter Download Path : "
+        text_size: self.size
+        pos_hint:{"x":0,"top":0.7}
+    TextInput:
+        id:path
+        text: app.Dir
+        multiline:False
+        pos_hint:{"x":0.5,"top":0.7}
+    Label:
+        text: "Enter Resolution (“720p”, “360p”) : "
+        text_size: self.size
+        pos_hint:{"x":0,"top":0.5}
+    TextInput:
+        id:res
+        multiline:False
+        text:"720p"
+        pos_hint:{"x":0.5,"top":0.5}
 
-    GridLayout:
-        cols:1
-        size: root.width, root.height
-        GridLayout:
-            cols:2
-            Label:
-                text: "Enter URL : "
-            TextInput:
-                id:url
-                multiline:False
-            Label:
-                text: "Enter Download Path : "
-            TextInput:
-                id:path
-                text: app.Dir
-                multiline:False
-            Label:
-                text: "Enter Resolution (“720p”, “360p”) : "
-            TextInput:
-                id:res
-                multiline:False
-                text:"720p"
-        Button:
-            text:"Download Videos"
-            on_press : root.btn1()
-        Button:
-            text:"Download Playlist"
-            on_press : root.btn2()
-        Label:
-            id:info
-            text: ""
+    Button:
+        #id:btn1
+        text: "Download Videos" #if btn1.state == "normal" else "Video"
+        pos_hint:{"x":0.025,"top":0.3}
+        size_hint: 0.95,0.10
+        on_press : app.videos(url.text, path.text, res.text,info)
+    Button:
+        text: "Download Playlist"
+        pos_hint:{"x":0.025,"top":0.2}
+        size_hint: 0.95,0.10
+        on_press : app.playlist(url.text, path.text, res.text,info)
+    Label:
+        id:info
+        text: ""
+        pos_hint:{"x":0.25,"top":0.1}
