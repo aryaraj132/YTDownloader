@@ -1,0 +1,38 @@
+<MyGrid>
+
+    url : url
+    path : path
+    res : res
+    info:info
+
+    GridLayout:
+        cols:1
+        size: root.width, root.height
+        GridLayout:
+            cols:2
+            Label:
+                text: "Enter URL : "
+            TextInput:
+                id:url
+                multiline:False
+            Label:
+                text: "Enter Download Path : "
+            TextInput:
+                id:path
+                text: app.Dir
+                multiline:False
+            Label:
+                text: "Enter Resolution (“720p”, “360p”) : "
+            TextInput:
+                id:res
+                multiline:False
+                text:"720p"
+        Button:
+            text:"Download Videos"
+            on_press : root.btn1()
+        Button:
+            text:"Download Playlist"
+            on_press : root.btn2()
+        Label:
+            id:info
+            text: ""
