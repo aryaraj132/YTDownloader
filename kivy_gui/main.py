@@ -15,6 +15,10 @@ class MyWindow(FloatLayout):
     url = ObjectProperty(None)
     path = ObjectProperty(None)
     res = ObjectProperty(None)
+    def on_touch_down(self, touch):
+        return super().on_touch_down(touch)
+    def on_touch_up(self, touch):
+        return super().on_touch_up(touch)
 
 
 class MyApp(App):
